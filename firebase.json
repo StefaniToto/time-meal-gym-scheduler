@@ -1,0 +1,31 @@
+{
+  "hosting": [
+    {
+      "target": "upgrade-ultimate",
+      "source": ".",
+      "frameworksBackend": {},
+      "public": "",
+      "ignore": [
+        "firebase.json",
+        ".vscode",
+        ".git",
+        ".gitignore",
+        ".editorconfig",
+        "src/**/.*",
+        "database.rules.json",
+        "package.json",
+        "README.md",
+        "tsconfig.json",
+        "webpack.config.js",
+        "yarn.lock",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

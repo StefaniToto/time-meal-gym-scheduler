@@ -88,8 +88,28 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "upgrade-ultimate:build:production",
+              "serveTarget": "upgrade-ultimate:serve:production"
+            },
+            "development": {
+              "buildTarget": "upgrade-ultimate:build:development",
+              "serveTarget": "upgrade-ultimate:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c8edf249-0ce0-42f8-8d80-d9f40eee5c1f"
   }
 }

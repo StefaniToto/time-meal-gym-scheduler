@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "capacitor-enappd": {
+      "hosting": {
+        "upgrade-ultimate": [
+          "capacitor-enappd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "capacitor-enappd"
+  }
+}
