@@ -34,7 +34,6 @@ export class LoginComponent {
     const { email, password } = event.value;
     try {
       await this.authService.loginUser(email, password);
-      console.log('login')
       this.router.navigate(['']);
     } catch (err:any) {
       this.error = err.message;

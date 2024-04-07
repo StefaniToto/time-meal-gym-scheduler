@@ -4,7 +4,7 @@ import {
   Meal,
   MealsService,
 } from '../../../shared/services/meals/meals.service';
-import { Observable, Subscription, switchMap, tap } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'meal',
@@ -25,7 +25,7 @@ import { Observable, Subscription, switchMap, tap } from 'rxjs';
           [meal]="meal"
           (create)="addMeal($event)"
           (update)="updateMeal($event)"
-          (remove)="removeMeal($event)"
+          (remove)="removeMeal()"
         >
         </meal-form>
       </div>
@@ -40,7 +40,6 @@ import { Observable, Subscription, switchMap, tap } from 'rxjs';
 })
 export class MealComponent implements OnInit, OnDestroy {
   meal$: Observable<Meal> = this.route.params.pipe(
-    tap((x) => console.log(x)),
     switchMap((param) => this.mealsService.getMeal(param['id'])),
   );
   subscription: Subscription = this.mealsService.meals$.subscribe();
@@ -66,13 +65,12 @@ export class MealComponent implements OnInit, OnDestroy {
   }
 
   async updateMeal(event: Meal) {
-    console.log(this.route.snapshot.params, 'snapshotssss');
     const key = this.route.snapshot.params['id'];
     await this.mealsService.updateMeal(key, event);
     this.backToMeals();
   }
 
-  async removeMeal(event: Meal) {
+  async removeMeal() {
     const key = this.route.snapshot.params['id'];
     await this.mealsService.removeMeal(key);
     this.backToMeals();

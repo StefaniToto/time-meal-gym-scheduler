@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class WorkoutPipe implements PipeTransform {
   transform(value: any) {
-    console.log(value, 'from pipes');
     if (value.type === 'endurance') {
       return ` Distance: ${value.endurance.distance + 'km'}, Duration: ${value.endurance.duration + 'mins'}`;
     } else {
