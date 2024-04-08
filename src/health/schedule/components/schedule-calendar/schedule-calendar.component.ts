@@ -69,7 +69,6 @@ export class ScheduleCalendarComponent implements OnChanges {
   }
 
   selectSection({ type, assigned, data }: any, section: string) {
-    console.log('some sections under', assigned);
     const day = this.selectedDay;
     this.select.emit({
       type,

@@ -11,7 +11,7 @@ import {
   Workout,
   WorkoutsService,
 } from '../../../shared/services/workouts/workouts.service';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '../../../../../store';
 
 @Component({
@@ -64,14 +64,10 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.date$ = this.store.select('date');
-    this.schedule$ = this.store
-      .select('schedule')
-      .pipe(tap((x: any) => console.log('schedule$', x)));
+    this.schedule$ = this.store.select('schedule');
 
     this.selected$ = this.store.select('selected');
-    this.list$ = this.store
-      .select('list')
-      .pipe(tap((x: any) => console.log('list$', x)));
+    this.list$ = this.store.select('list');
 
     this.subscriptions = [
       this.scheduleService.schedule$.subscribe(),
@@ -88,7 +84,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   assignItem(items: string[]) {
-    console.log('assign updated', items);
     this.scheduleService.updateItems(items);
     this.closeAssign();
   }

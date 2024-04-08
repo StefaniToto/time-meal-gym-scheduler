@@ -69,7 +69,6 @@ export class ScheduleService {
 
   list$ = this.section$.pipe(
     map((value: any) => {
-      console.log('list$list$list$list$', value, this.store.value[value.type]);
       this.store.set('list', this.store.value[value.type]);
       return this.store.value[value.type];
     }),
@@ -99,10 +98,11 @@ export class ScheduleService {
       for (const prop of data) {
         if (!mapped[prop.section]) {
           mapped[prop.section] = prop;
+        } else {
+          mapped[prop.section] = Object.assign(mapped[prop.section], prop);
         }
       }
       this.store.set('schedule', mapped);
-      console.log(data, 'schedule mapped');
       return mapped;
     }),
   );
